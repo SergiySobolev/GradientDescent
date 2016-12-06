@@ -1,0 +1,41 @@
+dataSet = load('e:/math/data/in1.txt'); 
+x = dataSet(:,1);
+y = dataSet(:,2);
+
+isp(x)
+
+
+normalization = true;
+
+% Applying mean normalization to our dataset
+
+if (normalization)
+
+    maxX = max(x);
+    minX = min(x);
+    x = (x - maxX) / (maxX - minX);
+
+end
+
+disp(x)
+
+x = [ones(length(x), 1) x];
+
+parameters = [1; 3];
+
+learningRate = 0.1;
+
+repetition = 150;
+
+[parameters, costHistory] = gradient(x, y, parameters, learningRate, repetition);
+
+
+input = 120;
+
+output = parameters(1) + parameters(2) * input;
+
+% figure;
+% 
+% plot(min(x(:, 2)):max(x(:, 2)), parameters(1) + parameters(2) * (min(x(:, 2)):max(x(:, 2))));
+
+hold on;
