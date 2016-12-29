@@ -1,0 +1,13 @@
+dataSet = load('e:/math/data/houseByingFeatures.txt'); 
+
+[m,n] = size(dataSet);
+y = dataSet(:,n);
+x = [ones(m, 1), dataSet(1:n-1, 1:m)];
+transpX = transp(x);
+theta = inv(x*transpX)*x;
+disp(y)
+disp(theta)
+
+
+
+
